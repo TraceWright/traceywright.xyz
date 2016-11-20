@@ -1,0 +1,18 @@
+
+traceywright@vm:~$ mysql -u tracey -p
+
+
+Enter password:
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 994669
+Server version: 5.1.73-1 (Debian)
+
+
+mysql> use tracey_db
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> ALTER TABLE walkdescription ADD display tinyint(4) default null;
+Query OK, 4 rows affected (0.00 sec)
+Records: 4  Duplicates: 0  Warnings: 0

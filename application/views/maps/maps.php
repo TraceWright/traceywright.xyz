@@ -1,3 +1,5 @@
+<?php $resources = $this->config->item('resources'); ?>
+
 <article>
     <style>
        #map {
@@ -11,6 +13,7 @@
        }
     </style>
 
+    <script src="<?php echo $resources;?>plugins/charts/Chart.bundle.min.js"></script>
 
 
    <h4 style="color: #F95B45"> <?php echo $walkDescription; ?></h4>
@@ -50,9 +53,35 @@
 
     Total Distance = <?php echo $distance ?> km
 
-    <br>
+    <br><br><br>
 
-    <!--  $walkdescription  -->
+    <canvas id="myChart" width="800" height="400"></canvas>
+
+    <br><br><br>
+
+    <script>
+    	var ctx = $("#myChart");
+    	var data = <?php echo json_encode($velocityArray)?>;
+    	var myLineChart = new Chart(ctx, {
+		    type: 'line',
+		    data: {
+        		datasets: [{
+            		label: 'Velocity',
+            		data: data,
+            		pointRadius: 0
+            	}]
+    		},
+		    options: {
+		    	responsive: false,
+		        scales: {
+		            xAxes: [{
+		                type: 'linear',
+		                position: 'bottom'
+		            }]
+		        }
+		    }
+		});
+	</script>
 
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRLNDPnXyvBJqPD061mOGZm5vXunjTXms&callback=initMap">

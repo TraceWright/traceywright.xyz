@@ -14,6 +14,8 @@
 		    <link rel="stylesheet" href="<?php echo $resources;?>plugins/foundation/stylesheets/foundation.min.css">
 		    <link rel="stylesheet" href="<?php echo $resources;?>plugins/foundation/stylesheets/app.css">
 
+		    <script src="<?php echo $resources;?>plugins/foundation/javascripts/vendor/jquery.js"></script>
+
 
 			<style type="text/css">
 				

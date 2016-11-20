@@ -40,30 +40,49 @@ class Maps extends CI_Controller {
 
         $totaldist = 0;
 
+        $time1 = 0;
+        $time2 = 0;
+
         $lat1 = 0;
         $lng1 = 0;
+
+        $velocityArray = array();
 
         foreach ($data['locationData'] as $key => $item)
 
         { 
             if ($lat1 == 0){
 
+                $time1 = $item->timestamp;
+
                 $lat1 = $item->lat;
                 $lng1 = $item->lng;
                 continue;
             } 
                
+            //calculates distance
 
-            $distance = $this->haversineGreatCircleDistance($lat1, $lng1, $item->lat, $item->lng);
-                
+            $distance = $this->haversineGreatCircleDistance($lat1, $lng1, $item->lat, $item->lng);  
+
             $lat1 = $item->lat;
             $lng1 = $item->lng;
 
+            $time2 = $item->timestamp;
+
             $totaldist += $distance;
+
+            //calculates time
+
+            $totaltime = $time2 - $time1;
+
+            //put time and distance into key value array
+
+            array_push($velocityArray, array('x'=>$totaltime, 'y'=>round($distance, 4, PHP_ROUND_HALF_UP)));
 
         }
 
         $data['distance'] = round($totaldist, 2, PHP_ROUND_HALF_UP);
+         $data['velocityArray'] = $velocityArray;
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/drilldownMenu', $data);

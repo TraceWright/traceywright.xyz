@@ -5,11 +5,10 @@
        #map {
         height: 400px;
         width: 60%;
-       } 
-
-       #map {
 	    resize:both;
 	    overflow:auto;
+	    margin-left: auto;
+	    margin-right: auto;
        }
     </style>
 
@@ -18,6 +17,15 @@
 
    <h4 style="color: #F95B45"> <?php echo $walkDescription; ?></h4>
 
+
+
+   <h5 style="margin-left: auto; margin-right: auto;"> Distance = <?php echo $distance ?> km </h5>
+   <h5 style="margin-left: auto; margin-right: auto;"> Time = <?php echo $time ?> minutes </h5>
+   <h5 style="margin-left: auto; margin-right: auto;"> Average Speed = <?php echo $averageSpeed ?> km/hr </h5>
+
+
+
+<br>
     <div id="map"></div>
     <script>
       function initMap() {
@@ -51,11 +59,11 @@
 
     </script>
 
-    Total Distance = <?php echo $distance ?> km
+    
 
     <br><br><br>
 
-    <canvas id="myChart" width="800" height="400"></canvas>
+    <canvas style="margin-left: auto; margin-right: auto;" id="myChart" width="800" height="400"></canvas>
 
     <br><br><br>
 
@@ -66,9 +74,13 @@
 		    type: 'line',
 		    data: {
         		datasets: [{
-            		label: 'Velocity',
+            		label: 'Velocity (meters (y-axis) / minute (x-axis))',
             		data: data,
-            		pointRadius: 0
+            		//xAxisID: 'Distance', todo
+            		pointRadius: 0,
+            		borderColor: '#8BC3F5',
+            		backgroundColor: 'transparent', 
+            		//tension: 0.6
             	}]
     		},
 		    options: {

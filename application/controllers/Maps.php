@@ -57,6 +57,10 @@ class Maps extends CI_Controller {
 
                 $lat1 = $item->lat;
                 $lng1 = $item->lng;
+
+                $counter = 0;
+                $incrementTime = 0;
+                $incrementDist = 0;
                 continue;
             } 
                
@@ -69,20 +73,46 @@ class Maps extends CI_Controller {
 
             $time2 = $item->timestamp;
 
-            $totaldist += $distance;
+            $totaldist += $distance;  /* kilometers */
 
             //calculates time
 
-            $totaltime = $time2 - $time1;
+            $totalseconds = $time2 - $time1;
+            $totalhours = $totalseconds / 3600;
 
-            //put time and distance into key value array
+            //calculates average speed
 
-            array_push($velocityArray, array('x'=>$totaltime, 'y'=>round($distance, 4, PHP_ROUND_HALF_UP)));
+            $averageSpeed = $totaldist / $totalhours;
+
+            
+
+            //collect time and distance into 60 second increments
+
+            $incrementDist += $distance;
+
+            $counter ++;
+
+            if ($counter == 6) {
+
+            //put time and distance into 2d key:value array for graph i.e. x:distance, y:totalseconds
+            
+            array_push($velocityArray, array('x'=>round(($totalseconds / 60), 0, PHP_ROUND_HALF_UP), 'y'=>round(($incrementDist * 1000), 1, PHP_ROUND_HALF_UP)));
+
+            $incrementTime = 0;
+            $incrementDist = 0;
+
+            $counter = 0;
+
+            }
+
+
 
         }
 
         $data['distance'] = round($totaldist, 2, PHP_ROUND_HALF_UP);
-         $data['velocityArray'] = $velocityArray;
+        $data['time'] = round($totalseconds / 60, 1, PHP_ROUND_HALF_UP);
+        $data['velocityArray'] = $velocityArray;
+        $data['averageSpeed'] = round($averageSpeed, 2, PHP_ROUND_HALF_UP);
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/drilldownMenu', $data);

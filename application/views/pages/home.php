@@ -25,6 +25,12 @@
 	<p>
 		My technical support person for this project (and others) is <a href="https://www.linkedin.com/in/luke-hovington-21b1254b">Luke Hovington</a> , who has been so helpful with solving problems that are out of my depth and require advanced IT skills. He's super patient, he lets me drive (the keyboard and mouse), and he takes the time to help me understand the problem and how to solve it. Also, his extensive IT experience has helped to match me with the products I need to develop my goals and ideas into reality. Thanks so much Luke, there will be more BBQ's and pie coming your way!
 	</p>
+
+	<p>
+		
+	Source code: <a href="https://github.com/TraceWright/traceywright.xyz">https://github.com/TraceWright/traceywright.xyz</a> 
+
+	</p>
 	
 	
 

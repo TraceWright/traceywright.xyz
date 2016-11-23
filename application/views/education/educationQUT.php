@@ -15,21 +15,25 @@
 	
 <h4 style="color: #464DE3">Software development</h4>
 <ul style="list-style: none; ">
-	<li>C#, Java, HTML5, XAML, PHP, MySQL, SQLite, JSON</li>
+	<li>C#, Java, HTML5, XAML, PHP, Python, MySQL, SQLite, JSON</li>
 	<li>Mobile App Design and Development</li>
 	<li>&emsp;Xamarin Cross Platform</li>
 	<li>&emsp;Android</li>
+	<li>&emsp;Software Development Kits (SDK's)</li>
+	<li>&emsp;Package Management</li>
+	<li>&emsp;Components</li>
 	<li>Website Design and Development</li>
 	<li>&emsp;CodeIgniter Framework</li>
+	<li>&emsp;Django Framework</li>	
 	<li>&emsp;LAMP Stack</li>
-	<li>&emsp;Eclipse (Java)</li>
+	<li>&emsp;Backends (MySQL & PostgreSQL)</li>
+	<li>&emsp;Eclipse IDE (Java)</li>
 	<li>Visual Studio IDE</li>
-	<li>Eclipse IDE</li>
+	<li>Model-View-Controller design pattern</li>
 	<li>API’s</li>
 	<li>JavaScript Plugins</li>
 	<li>HTTP POST</li>
-	<li>Another item</li>
-	<li>GitHub versioning</li>
+	<li>GitHub with SourceTree</li>
 	<li>Programming Language Theory</li>
 	<li>Compiler Construction (Java)</li>
 	<li>Agile Software Development</li>

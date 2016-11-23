@@ -17,16 +17,23 @@
 
    <h4 style="color: #F95B45"> <?php echo $walkDescription; ?></h4>
 
+	<p>
+	Distance = <?php echo $distance ?> km <br>
+	Time = <?php echo $time ?> minutes <br>
+	Average Speed = <?php echo $averageSpeed ?> km/hr <br>
+
+	<div id="map"></div>
+	</p>
 
 
-   <h5 style="margin-left: auto; margin-right: auto;"> Distance = <?php echo $distance ?> km </h5>
+  <!--  <h5 style="margin-left: auto; margin-right: auto;"> Distance = <?php echo $distance ?> km </h5>
    <h5 style="margin-left: auto; margin-right: auto;"> Time = <?php echo $time ?> minutes </h5>
-   <h5 style="margin-left: auto; margin-right: auto;"> Average Speed = <?php echo $averageSpeed ?> km/hr </h5>
+   <h5 style="margin-left: auto; margin-right: auto;"> Average Speed = <?php echo $averageSpeed ?> km/hr </h5> -->
 
 
 
 <br>
-    <div id="map"></div>
+    
     <script>
       function initMap() {
         var walkingCoordinates = [
@@ -74,7 +81,7 @@
 		    type: 'line',
 		    data: {
         		datasets: [{
-            		label: 'Velocity (meters (y-axis) / minute (x-axis))',
+            		label: 'Velocity (meters (y-axis) / minutes (x-axis))',
             		data: data,
             		//xAxisID: 'Distance', todo
             		pointRadius: 0,
@@ -87,6 +94,10 @@
 		    	responsive: false,
 		        scales: {
 		            xAxes: [{
+		            	// scaleLabel: {
+		            	// 	display: true,
+		            	// 	labelString: 'time'
+		            	// }
 		                type: 'linear',
 		                position: 'bottom'
 		            }]

@@ -12,9 +12,12 @@
 </figure>
 <p>
 
-	This year I worked casually as a Mohs Technican for Southbank Day Hospital. It was a great place to work. I got along well with the sugeon, and enjoyed the solidarity of having the mini-lab to myself for the most part. The pressure of having to process samples quickly to prevent the team of surgeons, anaethetists, nurses, and the patient from having to wait for me didn't impact upon the experience for me at all. At times when I recognised that other members of the team were communicating that they wanted the result 'now', I considered it most important to remain calm and focused on the task.	
+	This year I worked casually as a Mohs Technican for Southbank Day Hospital. It was a great place to work. I got along well with the sugeon, and enjoyed the solidarity of having the mini-lab to myself for the most part. The pressure of having to process samples quickly to prevent the team of surgeons, anaethetists, nurses, and the patient from having to wait was something I took in my stride, and handled well. 
 
-	
+	<figure style="float: left">
+			<img src="<?php echo $resources;?>images/scrubs.jpg" style="height:200px;"/>
+			<figcaption>Fig. 1 - Scrubs</figcaption>
+		</figure>
 </p>
 
 <p>
@@ -23,7 +26,15 @@
 
 	
 </p>
+<div>
+
+		<figure style="float: left">
+			<img src="<?php echo $resources;?>images/mohslab.jpg" style="height:200px; margin: 0px 0px 0px 0px;"/>
+			<figcaption>Fig. 2 - Mohs Lab</figcaption>
+		</figure>
+</div>
 <h4 style="color: #D41986">Useful References</h4>
+
 <ol>
 
 <li>Bancroft, J. D., & Gamble, M. (2008). Theory and practice of histological techniques. Elsevier Health Sciences.</li>
@@ -32,17 +43,22 @@
 
 </ol>
 
+
+
+
+
+	<div class="small-5 columns">
+		
+	</div>
+
+	</div>
+
+
 <p>
 
-	<figure style="float: left">
-	<img src="<?php echo $resources;?>images/mohslab.jpg" align="bottom" style="height:200px;"/>
-	<figcaption>Fig. 1 - Mohs Lab</figcaption>
-	</figure>
+	
 
-	<figure style="float: left">
-	<img src="<?php echo $resources;?>images/scrubs.jpg" align="bottom" style="height:200px;"/>
-	<figcaption>Fig. 2 - Scrubs</figcaption>
-	</figure>
+	
 
 </p>
 

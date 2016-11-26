@@ -45,9 +45,9 @@
     
 
    <li>
-        <a href="<?php echo site_url('about'); ?>">Fitness</a>
+        <a href="<?php echo site_url('about'); ?>">Fitness Tracker</a>
          <ul class="vertical menu"> 
-          <li><a href="<?php echo site_url('maps'); ?>">Walk/Cycle Maps</a></li>
+          <li><a href="<?php echo site_url('maps'); ?>">Walking/Cycling</a></li>
          </ul>
    </li>
 

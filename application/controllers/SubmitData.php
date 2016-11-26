@@ -32,5 +32,18 @@ class SubmitData extends CI_Controller {
 		//print_r (json_decode ($locationData));
 	}
 
+	public function testData() 
+	{
+		//$locationData = $this->input->post('data');
+
+		$locationData = file_get_contents('php://input');
+
+		$file = '/tmp/testData.txt';
+		file_put_contents($file, $locationData);
+		
+		echo 'data_transfer_failed';	
+
+	}
+
 
 }

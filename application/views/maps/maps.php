@@ -3,29 +3,43 @@
 <article>
     <style>
        #map {
-        height: 400px;
-        width: 60%;
-	    resize:both;
+        height: 300px;
+        width: 45%;
+        resize:both;
 	    overflow:auto;
-	    margin-left: auto;
-	    margin-right: auto;
+      margin-right: 70px;
+      margin-top: 30px
+	   /* margin-left: auto;
+	    margin-right: auto;*/
        }
     </style>
 
     <script src="<?php echo $resources;?>plugins/charts/Chart.bundle.min.js"></script>
 
 
-   <h4 style="color: #F95B45"> <?php echo $walkDescription; ?></h4>
+  
 
-	<p>
+<div class="expanded row">
+ 
+  <div class="medium-5 columns">
+<h4 style="color: #F95B45"> <?php echo $walkDescription; ?></h4>
+	<p style="float: left;">
 	Distance = <?php echo $distance ?> km <br>
 	Time = <?php echo $time ?> minutes <br>
 	Average Speed = <?php echo $averageSpeed ?> km/hr <br>
+  Elevation = <?php echo $elevation ?> feet <br>
 
-	<div id="map"></div>
 	</p>
 
+  </div>
 
+  <!-- <div class="small-2 columns"></div> -->
+
+<div id="map" class="medium-7 columns"></div>
+
+
+
+</div><br>
   <!--  <h5 style="margin-left: auto; margin-right: auto;"> Distance = <?php echo $distance ?> km </h5>
    <h5 style="margin-left: auto; margin-right: auto;"> Time = <?php echo $time ?> minutes </h5>
    <h5 style="margin-left: auto; margin-right: auto;"> Average Speed = <?php echo $averageSpeed ?> km/hr </h5> -->
@@ -66,44 +80,164 @@
 
     </script>
 
+    <div class="expanded row">
+
+  <div class="small-3 columns">
+
     
+ <h4 style="color: #F95B45">Data Analysis</h4>
+    <p>
+      
+      This graph illustrates the data captured by the Android mobile application that I custom-developed for this project using Visual Studio. You'll notice that a lot of the walks will have stretches of a few minutes where the velocity is zero, which is probably because I've stopped for a few moments to play games on my phone (ahem, Pokemon Go, cough cough). There's sometimes also a few spikes where I've done intervals of jogging, which hopefully balances things out a little. Altitude is just recently implemented, and may require tweaking to acheive more accurate results.
+      <br>
+      <br>
 
-    <br><br><br>
 
-    <canvas style="margin-left: auto; margin-right: auto;" id="myChart" width="800" height="400"></canvas>
 
-    <br><br><br>
+    </p></div>  
+
+    <div class="small-8 columns">
+
+    <canvas style="margin-left: auto; margin-right: auto; resize:both; overflow:auto; width: 600px; height: 400px" id="myChart" <!-- width="600" height="400" -->></canvas>
+
+    
+<br>
+<br>
+
+</div>
+</div>
+
 
     <script>
-    	var ctx = $("#myChart");
-    	var data = <?php echo json_encode($velocityArray)?>;
-    	var myLineChart = new Chart(ctx, {
-		    type: 'line',
-		    data: {
-        		datasets: [{
-            		label: 'Velocity (meters (y-axis) / minutes (x-axis))',
-            		data: data,
-            		//xAxisID: 'Distance', todo
-            		pointRadius: 0,
-            		borderColor: '#8BC3F5',
-            		backgroundColor: 'transparent', 
-            		//tension: 0.6
-            	}]
-    		},
-		    options: {
-		    	responsive: false,
-		        scales: {
-		            xAxes: [{
-		            	// scaleLabel: {
-		            	// 	display: true,
-		            	// 	labelString: 'time'
-		            	// }
-		                type: 'linear',
-		                position: 'bottom'
-		            }]
-		        }
-		    }
-		});
+     	var ctx = $("#myChart");
+  //   	var myLineChart = new Chart(ctx, {
+		//     type: 'line',
+		//     data: {
+  //         labels: <?php echo json_encode($velocityArray['x'])?>,
+  //       		datasets: [{
+  //           		label: 'Velocity',
+  //               yAxisID: 'Velocity',
+  //               fontSize: '14',
+  //           		data: <?php echo json_encode($velocityArray['y'])?>,
+  //           		// pointRadius: 0,
+  //           		// borderColor: '#8BC3F5',
+  //           		// backgroundColor: 'transparent', 
+  //           		//tension: 0.6
+  //           	}, {
+  //               label: 'Altitude',
+  //               yAxisID: 'Altitude',
+  //               fontSize: '14',
+  //               data: <?php echo json_encode($velocityArray['z'])?>,
+  //               // pointRadius: 0,
+  //               // borderColor: '#8BC3F5',
+  //               // backgroundColor: 'transparent', 
+  //               //tension: 0.6
+  //             }],
+  //   		},
+		//     options: {
+		//     	responsive: false,
+  //         title: {
+  //           // display: true,
+  //           // text: "Velocity"
+  //         },
+		//         scales: { 
+		//             xAxes: [{
+		//             	// scaleLabel: {
+		//             	// 	display: true,
+		//             	// 	labelString: "Time (minutes)",
+  //              //      fontSize: 14
+		//             	// },
+		//                 type: 'linear',
+		//                 position: 'bottom'
+		//             }],
+  //               yAxes: [{
+  //                  id: 'Velocity',
+  //                  type: 'linear',
+  //                  position: 'left',
+  //                 // scaleLabel: {
+  //                 //   display: true,
+  //                 //   labelString: "Change in Distance (meters)",
+  //                 //   fontSize: 14
+  //                 // }, 
+  //                 },
+  //                 {
+  //                  id: 'Altitude',
+  //                  type: 'linear',
+  //                  position: 'right',
+  //                 // scaleLabel: {
+  //                 //   display: true,
+  //                 //   labelString: "Change in Distance (meters)",
+  //                 //   fontSize: 14
+  //                 // }, 
+
+  //                   // type: 'linear',
+  //                   // position: 'bottom'  
+  //               }]
+
+               
+                              
+		//         }
+		//     }
+		// });
+
+
+new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: <?php echo json_encode($velocityArray['x'])?>,
+    datasets: [{
+      label: 'Velocity',
+      yAxisID: 'Velocity',
+      data: <?php echo json_encode($velocityArray['y'])?>,
+      pointRadius: 0,
+      borderColor: '#8BC3F5',
+      backgroundColor: 'transparent', 
+    }, {
+      label: 'Altitude',
+      yAxisID: 'Altitude',
+      data: <?php echo json_encode($velocityArray['z'])?>,
+      pointRadius: 0,
+      borderColor: '#F7272D',
+      backgroundColor: 'transparent', 
+    }]
+  },
+  options: {
+    title: {
+      display: true,
+      text: 'Walk/Cycle Data',
+      fontSize: 16,
+    },
+    scales: {
+       xAxes: [{
+        scaleLabel: {
+          display: true,
+          labelString: "Time (minutes)",
+          fontSize: 14,
+        },
+      }],
+      yAxes: [{
+        id: 'Velocity',
+        type: 'linear',
+        position: 'left',
+        scaleLabel: {
+          display: true,
+          labelString: "Change in Distance (meters)",
+          fontSize: 14
+        }, 
+      }, {
+        id: 'Altitude',
+        type: 'linear',
+        position: 'right',
+        scaleLabel: {
+          display: true,
+          labelString: "Altitude (feet)",
+          fontSize: 14
+        },         
+      }]
+    }
+  }
+});
+
 	</script>
 
     <script async defer

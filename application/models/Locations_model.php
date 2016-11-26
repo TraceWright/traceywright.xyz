@@ -20,6 +20,7 @@ class Locations_model extends CI_Model {
 	    		$insertJSON = array(
 	    			'lat' => $value->lat,
 	    			'lng' => $value->lng,
+	    			'alt' => $value->alt,
 	    			'timestamp' => $value->timestamp,
 	    			'sepflag' => $sflag
 	    			);

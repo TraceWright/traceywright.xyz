@@ -35,6 +35,7 @@ class Maps extends CI_Controller {
         }
 
         $data['title'] = ucfirst($page); // Capitalize the first letter
+        $data['headerImage'] = 'pastelsunset1.jpg'; 
         $data['locationData'] = $this->Locations_model->getLocations($sepFlag);
         $data['walkDescription'] = $this->Locations_model->getWalkDescription($sepFlag);
 
@@ -45,8 +46,10 @@ class Maps extends CI_Controller {
 
         $lat1 = 0;
         $lng1 = 0;
+        $altitude = 0;
 
-        $velocityArray = array();
+        $velocityArray = array('x'=>array(), 'y'=>array(), 'z'=>array());
+        //$altitudeArray = array('altavg'=>$altavg);
 
         foreach ($data['locationData'] as $key => $item)
 
@@ -70,6 +73,7 @@ class Maps extends CI_Controller {
 
             $lat1 = $item->lat;
             $lng1 = $item->lng;
+            $altitude += $item->alt;
 
             $time2 = $item->timestamp;
 
@@ -84,8 +88,6 @@ class Maps extends CI_Controller {
 
             $averageSpeed = $totaldist / $totalhours;
 
-            
-
             //collect time and distance into 60 second increments
 
             $incrementDist += $distance;
@@ -94,12 +96,17 @@ class Maps extends CI_Controller {
 
             if ($counter == 6) {
 
+                $altavg = $altitude / 6;
+
             //put time and distance into 2d key:value array for graph i.e. x:distance, y:totalseconds
             
-            array_push($velocityArray, array('x'=>round(($totalseconds / 60), 0, PHP_ROUND_HALF_UP), 'y'=>round(($incrementDist * 1000), 1, PHP_ROUND_HALF_UP)));
+            array_push($velocityArray['x'], round(($totalseconds / 60), 0, PHP_ROUND_HALF_UP));
+            array_push($velocityArray['y'], round(($incrementDist * 1000), 1, PHP_ROUND_HALF_UP));
+            array_push($velocityArray['z'], $altavg);
 
             $incrementTime = 0;
             $incrementDist = 0;
+            $altitude = 0;
 
             $counter = 0;
 
@@ -109,10 +116,13 @@ class Maps extends CI_Controller {
 
         }
 
+        $elevation = ( max($velocityArray['z'])) - (min($velocityArray['z']));
+
         $data['distance'] = round($totaldist, 2, PHP_ROUND_HALF_UP);
         $data['time'] = round($totalseconds / 60, 1, PHP_ROUND_HALF_UP);
         $data['velocityArray'] = $velocityArray;
         $data['averageSpeed'] = round($averageSpeed, 2, PHP_ROUND_HALF_UP);
+        $data['elevation'] = round($elevation, 1, PHP_ROUND_HALF_UP);
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/drilldownMenu', $data);
@@ -137,6 +147,7 @@ class Maps extends CI_Controller {
         }
 
         $data['title'] = ucfirst($page);
+        $data['headerImage'] = 'pastelsunset1.jpg'; 
         //$data['sepFlags'] = $this->Locations_model->getUniqueSep();
         $modeldata['idwalksdata'] = $this->Locations_model->getIDandWalkDescription();
 

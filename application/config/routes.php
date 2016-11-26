@@ -53,6 +53,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['grid'] = 'grid/view';
 
 $route['submitData'] = 'submitData/getjson';
+$route['testData'] = 'submitData/testData';
+
 
 $route['my/admin/locationsadmin/(:num)'] = 'locationsadmin/update_display_flag/$1';
 $route['my/admin/locationsadmin/locations/(:any)'] = 'locationsadmin/locations/$1';

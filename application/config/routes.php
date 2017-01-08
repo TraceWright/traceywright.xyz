@@ -96,9 +96,14 @@ $route['mohs'] = 'histoscience/view/mohs';
 
 $route['maps/(:num)'] = 'maps/view/$1';
 $route['maps'] = 'maps/show';
+$route['splits'] = 'splits/view';
+
 
 $route['changehistory/(:any)'] = 'changehistory/view/$1';
 $route['changehistory'] = 'pages/view/changehistory';
+
+$route['dotnetProject'] = 'DotNetProject/view';
+$route['biopythonProject'] = 'BiopythonProject/view';
 
 $route['messages/(:any)'] = 'messages/view/$1';
 $route['messages/create'] = 'messages/create';
@@ -107,5 +112,6 @@ $route['messages'] = 'messages';
 $route['(:any)'] = 'pages/view/$1';
 $route['default_controller'] = 'pages/view';
 
+$route['migrations'] = 'migrate/index';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

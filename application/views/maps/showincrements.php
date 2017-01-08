@@ -7,7 +7,7 @@
 
 <article>
 
-<h3 style="color: salmon">Walking and Cycling</h3>
+<h3 style="color: salmon">Fitness Tracking</h3>
 
 			
 <figure style="float: right">

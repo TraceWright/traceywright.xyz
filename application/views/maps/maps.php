@@ -28,6 +28,9 @@
 	Time = <?php echo $time ?> minutes <br>
 	Average Speed = <?php echo $averageSpeed ?> km/hr <br>
   Elevation = <?php echo $elevation ?> feet <br>
+  Split Time = <?php echo($splitcalc)  ?> seconds<br>
+
+
 
 	</p>
 
@@ -110,76 +113,7 @@
 
     <script>
      	var ctx = $("#myChart");
-  //   	var myLineChart = new Chart(ctx, {
-		//     type: 'line',
-		//     data: {
-  //         labels: <?php echo json_encode($velocityArray['x'])?>,
-  //       		datasets: [{
-  //           		label: 'Velocity',
-  //               yAxisID: 'Velocity',
-  //               fontSize: '14',
-  //           		data: <?php echo json_encode($velocityArray['y'])?>,
-  //           		// pointRadius: 0,
-  //           		// borderColor: '#8BC3F5',
-  //           		// backgroundColor: 'transparent', 
-  //           		//tension: 0.6
-  //           	}, {
-  //               label: 'Altitude',
-  //               yAxisID: 'Altitude',
-  //               fontSize: '14',
-  //               data: <?php echo json_encode($velocityArray['z'])?>,
-  //               // pointRadius: 0,
-  //               // borderColor: '#8BC3F5',
-  //               // backgroundColor: 'transparent', 
-  //               //tension: 0.6
-  //             }],
-  //   		},
-		//     options: {
-		//     	responsive: false,
-  //         title: {
-  //           // display: true,
-  //           // text: "Velocity"
-  //         },
-		//         scales: { 
-		//             xAxes: [{
-		//             	// scaleLabel: {
-		//             	// 	display: true,
-		//             	// 	labelString: "Time (minutes)",
-  //              //      fontSize: 14
-		//             	// },
-		//                 type: 'linear',
-		//                 position: 'bottom'
-		//             }],
-  //               yAxes: [{
-  //                  id: 'Velocity',
-  //                  type: 'linear',
-  //                  position: 'left',
-  //                 // scaleLabel: {
-  //                 //   display: true,
-  //                 //   labelString: "Change in Distance (meters)",
-  //                 //   fontSize: 14
-  //                 // }, 
-  //                 },
-  //                 {
-  //                  id: 'Altitude',
-  //                  type: 'linear',
-  //                  position: 'right',
-  //                 // scaleLabel: {
-  //                 //   display: true,
-  //                 //   labelString: "Change in Distance (meters)",
-  //                 //   fontSize: 14
-  //                 // }, 
-
-  //                   // type: 'linear',
-  //                   // position: 'bottom'  
-  //               }]
-
-               
-                              
-		//         }
-		//     }
-		// });
-
+  
 
 new Chart(ctx, {
   type: 'line',
@@ -213,7 +147,10 @@ new Chart(ctx, {
           display: true,
           labelString: "Time (minutes)",
           fontSize: 14,
-        },
+          },
+            ticks: {
+            autoSkipPadding: 5,
+          },
       }],
       yAxes: [{
         id: 'Velocity',

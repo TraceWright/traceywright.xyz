@@ -5,6 +5,8 @@
     <ul class="vertical menu">
       <li><a href="<?php echo site_url('home'); ?>">Scope Statement</a></li>
       <li><a href="<?php echo site_url('changehistory'); ?>">Change History</a></li>
+      <li><a href="<?php echo site_url('dotnetProject'); ?>">DotNet Project</a></li>
+      <li><a href="<?php echo site_url('biopythonProject'); ?>">Biopython Project</a></li>
     </ul>
   </li>
  
@@ -47,7 +49,8 @@
    <li>
         <a href="<?php echo site_url('about'); ?>">Fitness Tracker</a>
          <ul class="vertical menu"> 
-          <li><a href="<?php echo site_url('maps'); ?>">Walking/Cycling</a></li>
+          <li><a href="<?php echo site_url('maps'); ?>">Mobile App</a></li>
+          <li><a href="<?php echo site_url('splits'); ?>">Splits</a></li>
          </ul>
    </li>
 

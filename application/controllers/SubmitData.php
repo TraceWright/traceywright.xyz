@@ -19,14 +19,15 @@ class SubmitData extends CI_Controller {
 
 		if ($success == true) {
 
-		echo 'data_received';	
-
+			echo 'data_received';	
 		}
-
-		else
-
+		else if ($success == false) 
 		{
-		echo 'data_transfer_failed';
+			echo 'data_transfer_failed';
+		}
+		else {
+
+			echo 'unknown_error';
 		}
 
 		//print_r (json_decode ($locationData));

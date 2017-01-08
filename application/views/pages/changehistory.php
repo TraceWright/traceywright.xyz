@@ -67,4 +67,10 @@
 	Commenced writing content for Education pages.
 	</p>
 
+	<b>6/1/2017</b>
+
+	<br>
+	Troubleshooting mobile app crash issue when utilising Splits function whereby multiple functions are simultaneously attempting to access the same database file. Working through implementing the opening and closing of the database file before and after methods are run to avoid the Splits function from trying to access a 'locked' file. Also looking into potentially using semaphores or an additional database for the SplitRoutes table as a solution.
+	<br>
+
 </article>

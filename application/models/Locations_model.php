@@ -29,13 +29,25 @@ class Locations_model extends CI_Model {
 	    		array_push($data, $insertJSON);
 	    		
 	    	}
-		}    
+		} 
+
+		$spdata = $JSONArray->spdata;   
+
+		$this->db->insert_batch('Splits', $spdata);
 
 		$arraycount = count($data);
 
 		$this->db->insert_batch('Locations', $data);
 
 		return ($this->db->affected_rows() != $arraycount) ? false : true;
+	}
+
+	public function getSplits()
+	{
+		$this->db->select('snum, stimestamp');
+		$query = $this->db->get('Splits');
+
+		return $query->result();
 	}
 
 	public function getUniqueSep()

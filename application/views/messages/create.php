@@ -16,7 +16,7 @@
 
 	<p>
 		
-		Alternatively, I'm reachable via my <a href="https://www.linkedin.com/in/tracey-wright-591b1661">LinkedIn profile</a>. I'm particularly interested in gaining more programming experience, or engaging in some further medical or research laboratory work. If you have an opportunity that may be suitable please get in touch.
+		Alternatively, I'm reachable via my <a href="https://www.linkedin.com/in/tracey-wright-591b1661">LinkedIn profile</a>. Given that I'm approaching the end of my Master's of IT I'm particularly interested in graduate software development roles. If you have an employment or experience opportunity that may be suitable please do get in touch.
 
 	</p>
 

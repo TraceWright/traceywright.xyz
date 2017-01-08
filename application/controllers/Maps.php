@@ -35,9 +35,22 @@ class Maps extends CI_Controller {
         }
 
         $data['title'] = ucfirst($page); // Capitalize the first letter
-        $data['headerImage'] = 'pastelsunset1.jpg'; 
+        $data['headerImage'] = 'running1.jpg'; 
         $data['locationData'] = $this->Locations_model->getLocations($sepFlag);
         $data['walkDescription'] = $this->Locations_model->getWalkDescription($sepFlag);
+
+        $splitsdata = $this->Locations_model->getSplits();
+
+        $splitsArray = array();
+
+        foreach ($splitsdata as $key => $item) {
+
+            $splitsArray[$item->snum] = $item->stimestamp;
+
+        }
+
+        $data['arraysplits'] =  $splitsArray;
+        $data['splitcalc'] = $splitsArray[2] - $splitsArray[1];
 
         $totaldist = 0;
 
@@ -116,7 +129,14 @@ class Maps extends CI_Controller {
 
         }
 
-        $elevation = ( max($velocityArray['z'])) - (min($velocityArray['z']));
+        if (count($velocityArray['z']) > 0) 
+        {
+            $elevation = ( max($velocityArray['z'])) - (min($velocityArray['z']));
+        }
+        else 
+        {
+            $elevation = 0;
+        }
 
         $data['distance'] = round($totaldist, 2, PHP_ROUND_HALF_UP);
         $data['time'] = round($totalseconds / 60, 1, PHP_ROUND_HALF_UP);
@@ -147,7 +167,7 @@ class Maps extends CI_Controller {
         }
 
         $data['title'] = ucfirst($page);
-        $data['headerImage'] = 'pastelsunset1.jpg'; 
+        $data['headerImage'] = 'running1.jpg'; 
         //$data['sepFlags'] = $this->Locations_model->getUniqueSep();
         $modeldata['idwalksdata'] = $this->Locations_model->getIDandWalkDescription();
 

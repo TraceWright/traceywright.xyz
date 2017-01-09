@@ -57,6 +57,10 @@
 <?php foreach ($locationData as $key => $item){ echo "{lat: $item->lat, lng: $item->lng},\n"; } ?>
         ]
 
+        var splitCoordinates = [
+<?php foreach ($arraysplits as $key => $item){ echo "{num: $key, time: $item},\n"; } ?>
+        ]
+
         // var uluru = {lat: -25.363, lng: 131.044};
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 13,

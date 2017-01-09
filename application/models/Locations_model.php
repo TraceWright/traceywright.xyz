@@ -42,8 +42,9 @@ class Locations_model extends CI_Model {
 		return ($this->db->affected_rows() != $arraycount) ? false : true;
 	}
 
-	public function getSplits()
+	public function getSplits($sepFlag)
 	{
+		$this->db->where('sepflag', $sepFlag);
 		$this->db->select('snum, stimestamp');
 		$query = $this->db->get('Splits');
 

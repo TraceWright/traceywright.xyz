@@ -42,6 +42,17 @@ class Locations_model extends CI_Model {
 		return ($this->db->affected_rows() != $arraycount) ? false : true;
 	}
 
+	public function getSplitsRnum($sepFlag)
+	{
+		$this->db->where('sepflag', $sepFlag);
+		$this->db->select('rnum');
+		$this->db->limit(1);
+		$query = $this->db->get('Splits');
+
+		return $query->result();
+	}
+
+
 	public function getSplits($sepFlag)
 	{
 		$this->db->where('sepflag', $sepFlag);
@@ -84,9 +95,6 @@ class Locations_model extends CI_Model {
 
 	public function setLocationDescription()
 	{
-		
-
-
 		$data = array(
                 'sepflagid' => $this->input->post('sepflagid'),
                 'walkdescription' => $this->input->post('walkdescription'),

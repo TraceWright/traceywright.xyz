@@ -28,7 +28,23 @@
 	Time = <?php echo $time ?> minutes <br>
 	Average Speed = <?php echo $averageSpeed ?> km/hr <br>
   Elevation = <?php echo $elevation ?> feet <br>
-  Split Time = <?php echo($splitcalc)  ?> seconds<br>
+  <!-- Split Time = <?php echo($splitcalc)  ?> seconds<br> -->
+  <?php
+    $currentKey = -1; 
+    $currentItem = -1;
+
+    foreach ($arraysplits as $key => $item)
+    {
+      if ($currentKey != -1)
+      {
+        echo "Split Time between $currentKey and $key = ".($item - $currentItem)." seconds<br>";
+      }
+
+      $currentKey = $key;
+      $currentItem = $item;
+    }
+  ?>
+  Route Number = <?php print_r ($routeNumber)  ?>
 
 
 

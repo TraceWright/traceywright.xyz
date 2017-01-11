@@ -38,9 +38,9 @@ class Maps extends CI_Controller {
         $data['headerImage'] = 'running1.jpg'; 
         $data['locationData'] = $this->Locations_model->getLocations($sepFlag);
         $data['walkDescription'] = $this->Locations_model->getWalkDescription($sepFlag);
-        $splitsdata = $this->Locations_model->getSplits($sepFlag);
+        $data['arraysplits'] = $this->Locations_model->getSplits($sepFlag);
         $splitsdatarnum = $this->Locations_model->getSplitsRnum($sepFlag);
-        $splitsArray = array();
+
 
         if (sizeof($splitsdatarnum) > 0) 
         {
@@ -50,23 +50,6 @@ class Maps extends CI_Controller {
         {
             $data['routeNumber'] = 0;   
         }
-
-
-        foreach ($splitsdata as $key => $item) 
-        {
-            $splitsArray[$item->snum] = $item->stimestamp;
-        }
-
-        $data['arraysplits'] =  $splitsArray;
-        if (sizeof($splitsArray) > 1) 
-        {
-            $data['splitcalc'] = $splitsArray[2] - $splitsArray[1];
-        }
-        else
-        {
-            $data['splitcalc'] = 0;   
-        }
-
 
 
         $totaldist = 0;

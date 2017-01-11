@@ -3,8 +3,8 @@
 <article>
     <style>
        #map {
-        height: 300px;
-        width: 45%;
+        height: 400px;
+        width: 50%;
         resize:both;
 	    overflow:auto;
       margin-right: 70px;
@@ -25,10 +25,11 @@
 <h4 style="color: #F95B45"> <?php echo $walkDescription; ?></h4>
 	<p style="float: left;">
 	Distance = <?php echo $distance ?> km <br>
-	Time = <?php echo $time ?> minutes <br>
+	Time = <?php echo $time ?> mins <br>
 	Average Speed = <?php echo $averageSpeed ?> km/hr <br>
-  Elevation = <?php echo $elevation ?> feet <br>
-  <!-- Split Time = <?php echo($splitcalc)  ?> seconds<br> -->
+  Elevation = <?php echo $elevation ?> ft <br>
+  Route Number = <?php print_r ($routeNumber)  ?> <br>
+  Split Times: <br>
   <?php
     $currentKey = -1; 
     $currentItem = -1;
@@ -37,16 +38,14 @@
     {
       if ($currentKey != -1)
       {
-        echo "Split Time between $currentKey and $key = ".($item - $currentItem)." seconds<br>";
+        echo "&emsp; $currentKey to $item->snum = ".(round(($item->stimestamp - $currentItem)/60, 1, PHP_ROUND_HALF_UP))." mins<br>";
       }
 
-      $currentKey = $key;
-      $currentItem = $item;
+      $currentKey = $item->snum;
+      $currentItem = $item->stimestamp;
     }
   ?>
-  Route Number = <?php print_r ($routeNumber)  ?>
-
-
+  
 
 	</p>
 
@@ -69,25 +68,53 @@
     
     <script>
       function initMap() {
-        var walkingCoordinates = [
-<?php foreach ($locationData as $key => $item){ echo "{lat: $item->lat, lng: $item->lng},\n"; } ?>
+         
+         var walkingCoordinates = [
+          <?php foreach ($locationData as $key => $item){ echo "{lat: $item->lat, lng: $item->lng},\n"; } ?>
         ]
 
-        var splitCoordinates = [
-<?php foreach ($arraysplits as $key => $item){ echo "{num: $key, time: $item},\n"; } ?>
-        ]
-
-        // var uluru = {lat: -25.363, lng: 131.044};
         var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 13,
+          zoom: 14,
           center: walkingCoordinates[0]
         });
 
+        var iconBase = '<?php echo $resources;?>images/';
+        var icons = {
+          Flag: {
+            icon: iconBase + 'MarkerPink.png'
+          },
+          StartFinish: {
+            icon: iconBase + 'ChequeredFlagPink.png'
+          },
+        };
+
+<?php foreach ($arraysplits as $key => $item){ 
+          echo " var marker = new google.maps.Marker({
+          position: {lat: $item->slat, lng: $item->slng},
+          map: map,
+          title: 'Split Location: $item->snum',
+          ";
+
+          if ($key == 0 || sizeof($arraysplits) - 1 == $key) 
+          {
+            echo "icon: icons['StartFinish'].icon,";
+          }
+          else
+          {
+            echo "icon: icons['Flag'].icon,";
+          }
+
+          echo "
+        });\n"; 
+      }
+?>
+
+       
 
         var walkPath = new google.maps.Polyline({
             path: walkingCoordinates,
             geodesic: true,
-            strokeColor: '#FF0000',
+            strokeColor: '#3333cc',
             strokeOpacity: 1.0,
             strokeWeight: 2
           });
@@ -111,7 +138,7 @@
  <h4 style="color: #F95B45">Data Analysis</h4>
     <p>
       
-      This graph illustrates the data captured by the Android mobile application that I custom-developed for this project using Visual Studio. You'll notice that a lot of the walks will have stretches of a few minutes where the velocity is zero, which is probably because I've stopped for a few moments to play games on my phone (ahem, Pokemon Go, cough cough). There's sometimes also a few spikes where I've done intervals of jogging, which hopefully balances things out a little. Altitude is just recently implemented, and may require tweaking to acheive more accurate results.
+      This graph illustrates the data captured by the Android mobile application, creatively named App2, which was custom-developed for this project. I've noticed that where there are increases in altitude, velocity often decreases and conversely when there are decreases in altitude, velocity often increases which is what is expected when travelling up and down a hill or stairs. Not exactly profound stuff, but its kinda cool to see how my travels are tracking. 
       <br>
       <br>
 

@@ -49,8 +49,7 @@
    <li>
         <a href="<?php echo site_url('about'); ?>">Fitness Tracker</a>
          <ul class="vertical menu"> 
-          <li><a href="<?php echo site_url('maps'); ?>">Mobile App</a></li>
-          <li><a href="<?php echo site_url('splits'); ?>">Splits</a></li>
+          <li><a href="<?php echo site_url('maps'); ?>">Android App</a></li>
          </ul>
    </li>
 

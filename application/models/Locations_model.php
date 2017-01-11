@@ -56,7 +56,7 @@ class Locations_model extends CI_Model {
 	public function getSplits($sepFlag)
 	{
 		$this->db->where('sepflag', $sepFlag);
-		$this->db->select('snum, stimestamp');
+		$this->db->select('snum, stimestamp, slat, slng');
 		$query = $this->db->get('Splits');
 
 		return $query->result();
